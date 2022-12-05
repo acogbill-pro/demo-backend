@@ -1,0 +1,32 @@
+{
+  "name": "demo-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "NODE_ENV=test NODE_NO_WARNINGS=1 mocha",
+    "start": "nodemon ./src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/acogbill-pro/demo-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/acogbill-pro/demo-backend/issues"
+  },
+  "homepage": "https://github.com/acogbill-pro/demo-backend#readme",
+  "dependencies": {
+    "-": "^0.0.1",
+    "chai": "^4.3.7",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mocha": "^10.1.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.20",
+    "save-dev": "^0.0.1-security",
+    "supertest": "^6.3.2"
+  }
+}
