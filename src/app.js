@@ -11,9 +11,9 @@ app.use(logger('dev'))
 app.use(express.json()) //http://expressjs.com/en/api.html#express.json
 app.use(express.urlencoded({ extended: false })) //http://expressjs.com/en/5x/api.html#express.urlencoded
 
-const postRouter = require('./routes/posts')
+const userRouter = require('./routes/user')
 
-app.use('/posts', postRouter)
+app.use('/user', userRouter)
 
 app.listen(PORT, () => {
   console.info(`App listening on port ${PORT}`)
