@@ -15,31 +15,27 @@ router.get('/', (req, res, next) => {
             'Content-Type': 'application/json',
             // NOTE the `:` after the Token in the below
             'Authorization': `Basic ${Buffer.from(`${process.env.PROFILES_ACCESS_TOKEN}:`).toString('base64')}`,
-            },
-        }
+        },
+    }
 
-        const idLabel = req.query.anon ? 'anonymous_id' : 'user_id'
+    const idLabel = req.query.anon ? 'anonymous_id' : 'user_id'
 
-        const requestURL = `https://profiles.segment.com/v1/spaces/${process.env.PROFILES_SPACE_ID}/collections/users/profiles/${idLabel}:${userID}/traits`
+    const requestURL = `https://profiles.segment.com/v1/spaces/${process.env.PROFILES_SPACE_ID}/collections/users/profiles/${idLabel}:${userID}/traits`
 
-        const fetchedProfile = fetch(requestURL, options)
-        .then((response) => {
-            res.send(response)
-            /*if (response.ok) {
-                const convertToJSON = response.json()
-                const status = convertToJSON.then((json) => {
-                    console.log(json)
-                })
-            } else {
-                console.log(response.status)
-            }*/     
-        }).catch(res.send({response: {status:500}}))
-    /*const headers = {
-      const requestURL = 
-      `https://cogbill-demo-4919.twil.io/sms?From=${encodeURIComponent('+1')}${encodeURIComponent('6086315755')}&To=${encodeURIComponent('+1')}${encodeURIComponent('9177576756')}&Body=${encodeURIComponent('Ahoy from Express')}`
+    const fetchedProfile = fetch(requestURL, options)
+    .then((response) => {
+        res.send(response)
 
-      */
-    
+        /*if (response.ok) {
+            
+            const convertToJSON = response.json()
+            const status = convertToJSON.then((json) => {
+                console.log(json)
+            })
+        } else {
+            console.log(response.status)
+        }*/
+    }).catch(() => res.send({status:999}))  
 })
 
 router.post('/', (req, res, next) => {
