@@ -1,6 +1,5 @@
 // /routes/posts.js
 const express = require('express')
-//const Buffer = require('buffer')
 const string = require('../middleware/example.js')
 const router = express.Router()
 const fetch = (...args) =>
@@ -24,7 +23,12 @@ router.get('/', (req, res, next) => {
 
     const fetchedProfile = fetch(requestURL, options)
     .then((response) => {
-        res.send(response)
+        const convertToJSON = response.json()
+        const status = convertToJSON.then((json) => {
+            console.log(json)
+            res.send(json)
+        })
+        
 
         /*if (response.ok) {
             
