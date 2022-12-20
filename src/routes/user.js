@@ -17,10 +17,12 @@ router.get('/', (req, res, next) => {
         },
     }
 
-    const idLabel = req.query.anon ? 'anonymous_id' : 'user_id'
+    //console.log(req.query.anon)
+    const idLabel = req.query.anon === 'true' ? 'anonymous_id' : 'user_id'
 
     const requestURL = `https://profiles.segment.com/v1/spaces/${process.env.PROFILES_SPACE_ID}/collections/users/profiles/${idLabel}:${userID}/traits`
 
+    //console.log(requestURL)
     const fetchedProfile = fetch(requestURL, options)
     .then((response) => {
         const convertToJSON = response.json()
