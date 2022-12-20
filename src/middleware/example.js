@@ -1,6 +1,6 @@
-// /routes/posts.js
+// Example if middleware is needed
 const express = require('express')
 
-const analytics = 'You have hit GET / posts endpoint loser'
+const string = 'This string is available via middleware'
 
-module.exports = analytics
+module.exports = string
