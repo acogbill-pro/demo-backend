@@ -1,11 +1,19 @@
 // ~/routes/user?id=Example_User_ID&anon=false
 
 const express = require('express')
+const checkKey = require('../middleware/auth.js')
 const router = express.Router()
 const fetch = (...args) =>
 	import('node-fetch').then(({default: fetch}) => fetch(...args));
 
 router.get('/', (req, res, next) => {
+    const requestKey = req.get('Authorization')
+
+    if (!checkKey(requestKey)) {
+        res.send({response: 'POST', status: 401})
+        return
+    }
+
     // As documented here https://segment.com/docs/profiles/profile-api/
     const userID = req.query.id
     

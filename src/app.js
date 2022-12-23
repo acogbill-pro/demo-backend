@@ -16,8 +16,10 @@ app.use(express.json()) //http://expressjs.com/en/api.html#express.json
 app.use(express.urlencoded({ extended: false })) //http://expressjs.com/en/5x/api.html#express.urlencoded
 
 const userRouter = require('./routes/user')
-
 app.use('/user', userRouter)
+
+const objectRouter = require('./routes/object')
+app.use('/object', objectRouter)
 
 app.listen(PORT, () => {
   console.info(`App listening on port ${PORT}`)
